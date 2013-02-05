@@ -39,15 +39,16 @@ var onScrapDone = function (scrapped) {
 }
 
 var finalFilter = function () {
-  var res = [];
+  var res = {};
   var map = {};
   _.each(g, function (data, shoutId) {
     if (map[data.shortUrl] && map[data.shortUrl] < shoutId) {
       return;
     }
     map[data.shortUrl] = shoutId;
-    res.push(data);
+    res[data.shortUrl] = data;;
   });
+  res = _.values(res);
   res = _.sortBy(res, function(p) {
     return -p.likes;
   });
