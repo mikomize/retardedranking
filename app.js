@@ -1,6 +1,7 @@
 var exec = require('child_process').exec;
 var urlShortener = require('./url-shortener.js');
 var urlScrapper = require('./url-scrapper-from-group.js');
+var urlLike = require('./url-likes.js');
 var _ = require('underscore');
 var fs = require('fs');
 
@@ -13,9 +14,10 @@ var g;
 var todo;
 
 var countLikes = function (shoutId) {
-  var child = exec('phantomjs url-likes-count.js "' + encodeURIComponent(g[shoutId].shortUrl) + '"' , function (error, stdout, stderr) {
+
+  urlLike.getIrDone(encodeURIComponent(g[shoutId].shortUrl), function (count) {    
     todo--;
-    g[shoutId].likes = parseInt(stdout);
+    g[shoutId].likes = count;
     if (todo == 0) {
       finalFilter();
     }
@@ -54,6 +56,7 @@ var finalFilter = function () {
   });
   var templateString = fs.readFileSync('rank.tpl', 'utf8');
   var template = _.template(templateString)
+  console.log(res);
   fs.writeFileSync('./www/index.html', template({'data': res}));
 }
 
