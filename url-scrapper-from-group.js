@@ -16,8 +16,9 @@ var scrapPage = function (window, callback) {
     }
     var match = $(attachment).attr('data-url').match(/http:\/\/(s|www)?.oblep.pl\/\S*/, '');
     if(match) {
-      var name = $(elem).find('a.author').attr('title');
-      scrapped[$(elem).attr('data-shout-id')] = {'url': match[0], 'name': name, 'uid': $(elem).attr('data-user-id')};
+      var name = $(elem).find('a.author').attr('data-hint-name');
+      var avatar = $(elem).find('a.author').attr('data-hint-avatar-uri');
+      scrapped[$(elem).attr('data-shout-id')] = {'url': match[0], 'name': name, 'avatar': avatar ,'uid': $(elem).attr('data-user-id')};
     }
   });
   done++;

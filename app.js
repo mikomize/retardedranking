@@ -53,8 +53,8 @@ var finalFilter = function () {
     return -p.likes;
   });
   var templateString = fs.readFileSync('rank.tpl', 'utf8');
-  var template = _.template(templateString);
-  console.log(template({'data': res}));
+  var template = _.template(templateString)
+  fs.writeFileSync('./www/index.html', template({'data': res}));
 }
 
 urlScrapper.getIrDone(onScrapDone);
