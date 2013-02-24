@@ -1,11 +1,11 @@
 .ranking {
-	width: 370px;
 	background: #eee;
 	font-size: 12px;
 	font-family: Tahoma, sans-serif;
-	overflow: hidden;
+	overflow: scroll;
 	line-height: 18px;
 	padding-bottom: 10px;
+	max-height: 314px;
 }
 
 h1 {
@@ -44,6 +44,8 @@ a {
 	color: #037fd6;
 	text-decoration: none;
 	display: block;
+	max-width: 253px;
+	overflow: hidden;
 }
 
 .fajne {

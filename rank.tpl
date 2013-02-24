@@ -6,7 +6,6 @@
 </head>
 <body>
 <div class="ranking">
-  <h1>Ranking:</h1>
   <ul>
   	<% _.each(data, function (rank) { %>
 	  <li>
